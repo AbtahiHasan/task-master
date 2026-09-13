@@ -1,0 +1,262 @@
+{% extends "layouts/dashboard.html" %} {% block title %}Manager Dashboard{%
+endblock title %} {% block tasks %}
+<main class="px-3 max-w-7xl mx-auto">
+    <!-- cards  -->
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <!-- card 1  -->
+        <article class="bg-white p-4 rounded space-y-3">
+            <h3>Total Tasks</h3>
+            <div class="flex justify-between space-y-3">
+                <div>
+                    <p class="text-4xl">3</p>
+                    <span class="text-gray-400 mt-2">1 Month Ago</span>
+                </div>
+                <div
+                    class="flex justify-center items-center h-12 w-12 rounded-full bg-blue-50"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="size-8 text-blue-800"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"
+                        />
+                    </svg>
+                </div>
+            </div>
+        </article>
+        <!-- card 2  -->
+        <article class="bg-white p-4 rounded space-y-3">
+            <h3>Complete Tasks</h3>
+            <div class="flex justify-between space-y-3">
+                <div>
+                    <p class="text-4xl">3</p>
+                    <span class="text-gray-400 mt-2">1 Month Ago</span>
+                </div>
+                <div
+                    class="flex justify-center items-center h-12 w-12 rounded-full bg-green-50"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="size-8 text-green-800"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                        />
+                    </svg>
+                </div>
+            </div>
+        </article>
+        <!-- card 3  -->
+        <article class="bg-white p-4 rounded space-y-3">
+            <h3>Tasks In Progress</h3>
+            <div class="flex justify-between space-y-3">
+                <div>
+                    <p class="text-4xl">3</p>
+                    <span class="text-gray-400 mt-2">1 Month Ago</span>
+                </div>
+                <div
+                    class="flex justify-center items-center h-12 w-12 rounded-full bg-yellow-50"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="size-8 text-yellow-800"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                        />
+                    </svg>
+                </div>
+            </div>
+        </article>
+        <!-- card 4  -->
+        <article class="bg-white p-4 rounded space-y-3">
+            <h3>Todos</h3>
+            <div class="flex justify-between space-y-3">
+                <div>
+                    <p class="text-4xl">3</p>
+                    <span class="text-gray-400 mt-2">1 Month Ago</span>
+                </div>
+                <div
+                    class="flex justify-center items-center h-12 w-12 rounded-full bg-purple-50"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="size-8 text-purple-800"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"
+                        />
+                    </svg>
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <!-- table  -->
+    <table class="w-full mt-10 bg-white rounded-lg overflow-hidden shadow-sm">
+        <thead>
+            <tr class="border-b border-gray-200 py-3">
+                <th
+                    class="uppercase text-start px-4 py-3 text-gray-600 text-sm font-semibold"
+                >
+                    Task Title
+                </th>
+                <th
+                    class="uppercase text-start py-3 text-gray-600 text-sm font-semibold"
+                >
+                    Priority
+                </th>
+                <th
+                    class="uppercase text-start text-gray-600 text-sm font-semibold"
+                >
+                    Team
+                </th>
+                <th
+                    class="uppercase text-start text-gray-600 text-sm font-semibold"
+                >
+                    Created At
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Low Priority Task -->
+            <tr class="border-b border-gray-200 hover:bg-gray-50">
+                <td class="px-4 py-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-3 h-3 rounded-full bg-green-600"></div>
+                        <p class="font-medium text-gray-800">Test Low Task</p>
+                    </div>
+                </td>
+                <td class="py-4">
+                    <div
+                        class="text-blue-600 bg-blue-100 w-20 flex justify-center px-2 py-1 rounded-full text-sm font-medium"
+                    >
+                        Low
+                    </div>
+                </td>
+                <td class="py-4">
+                    <div class="flex">
+                        <div
+                            class="border-white border-2 bg-blue-600 h-10 w-10 rounded-full text-white flex justify-center items-center font-semibold text-sm"
+                        >
+                            CA
+                        </div>
+                        <div
+                            class="border-white border-2 bg-purple-600 h-10 w-10 rounded-full text-white -ml-3 flex items-center justify-center font-semibold text-sm"
+                        >
+                            JD
+                        </div>
+                        <div
+                            class="border-white border-2 bg-teal-600 h-10 w-10 rounded-full text-white -ml-3 flex items-center justify-center font-semibold text-sm"
+                        >
+                            SM
+                        </div>
+                    </div>
+                </td>
+                <td class="py-4 text-gray-600">9 Months Ago</td>
+            </tr>
+
+            <!-- Normal Priority Task -->
+            <tr class="border-b border-gray-200 hover:bg-gray-50">
+                <td class="px-4 py-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <p class="font-medium text-gray-800">
+                            Test Normal Task
+                        </p>
+                    </div>
+                </td>
+                <td class="py-4">
+                    <div
+                        class="text-yellow-600 bg-yellow-100 w-20 flex justify-center px-2 py-1 rounded-full text-sm font-medium"
+                    >
+                        Normal
+                    </div>
+                </td>
+                <td class="py-4">
+                    <div class="flex">
+                        <div
+                            class="border-white border-2 bg-green-600 h-10 w-10 rounded-full text-white flex justify-center items-center font-semibold text-sm"
+                        >
+                            RK
+                        </div>
+                        <div
+                            class="border-white border-2 bg-indigo-600 h-10 w-10 rounded-full text-white -ml-3 flex items-center justify-center font-semibold text-sm"
+                        >
+                            TL
+                        </div>
+                    </div>
+                </td>
+                <td class="py-4 text-gray-600">5 Months Ago</td>
+            </tr>
+
+            <!-- High Priority Task -->
+            <tr class="border-b border-gray-200 hover:bg-gray-50">
+                <td class="px-4 py-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-3 h-3 rounded-full bg-red-600"></div>
+                        <p class="font-medium text-gray-800">Test High Task</p>
+                    </div>
+                </td>
+                <td class="py-4">
+                    <div
+                        class="text-red-600 bg-red-100 w-20 flex justify-center px-2 py-1 rounded-full text-sm font-medium"
+                    >
+                        High
+                    </div>
+                </td>
+                <td class="py-4">
+                    <div class="flex">
+                        <div
+                            class="border-white border-2 bg-rose-600 h-10 w-10 rounded-full text-white flex justify-center items-center font-semibold text-sm"
+                        >
+                            AL
+                        </div>
+                        <div
+                            class="border-white border-2 bg-orange-600 h-10 w-10 rounded-full text-white -ml-3 flex items-center justify-center font-semibold text-sm"
+                        >
+                            MK
+                        </div>
+                        <div
+                            class="border-white border-2 bg-amber-600 h-10 w-10 rounded-full text-white -ml-3 flex items-center justify-center font-semibold text-sm"
+                        >
+                            PW
+                        </div>
+                        <div
+                            class="border-white border-2 bg-cyan-600 h-10 w-10 rounded-full text-white -ml-3 flex items-center justify-center font-semibold text-sm"
+                        >
+                            DS
+                        </div>
+                    </div>
+                </td>
+                <td class="py-4 text-gray-600">2 Weeks Ago</td>
+            </tr>
+        </tbody>
+    </table>
+</main>
+{% endblock tasks %}
