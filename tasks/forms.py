@@ -1,18 +1,58 @@
 from django import forms
 
+from tasks.models import Task
 
-class TaskForm(forms.Form):
-    title = forms.CharField(max_length=100)
-    description = forms.CharField(widget=forms.Textarea, label="Description")
-    due_date = forms.DateField(widget=forms.SelectDateWidget, label="Due Date")
-    assigned_to = forms.MultipleChoiceField(
-        widget=forms.CheckboxSelectMultiple,
-    )
 
-    def __init__(self, *args, **kwargs):
-        employees = kwargs.pop("employees", [])
-        super().__init__(*args, **kwargs)
-        field = self.fields["assigned_to"]
-        assert isinstance(field, forms.MultipleChoiceField)
+class TaskModelForm(forms.ModelForm):
+    class Meta:
+        model = Task
+        fields = ["project", "title", "description", "due_date", "assigned_to"]
 
-        field.choices = [(emp.id, emp.name) for emp in employees]
+        widgets = {
+            "project": forms.Select(
+                attrs={
+                    "class": (
+                        "w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 "
+                        "text-sm text-gray-900 shadow-sm outline-none "
+                        "transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+                    )
+                }
+            ),
+            "title": forms.TextInput(
+                attrs={
+                    "class": (
+                        "w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 "
+                        "text-sm text-gray-900 shadow-sm outline-none "
+                        "placeholder:text-gray-400 "
+                        "transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+                    ),
+                    "placeholder": "Enter task title",
+                }
+            ),
+            "description": forms.Textarea(
+                attrs={
+                    "class": (
+                        "w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 "
+                        "text-sm text-gray-900 shadow-sm outline-none "
+                        "placeholder:text-gray-400 resize-none "
+                        "transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+                    ),
+                    "rows": 5,
+                    "placeholder": "Describe the task...",
+                }
+            ),
+            "due_date": forms.SelectDateWidget(
+                attrs={
+                    "class": (
+                        "rounded-lg border border-gray-300 bg-white px-3 py-2.5 "
+                        "text-sm text-gray-900 shadow-sm outline-none "
+                        "transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+                    )
+                }
+            ),
+            "assigned_to": forms.CheckboxSelectMultiple(
+                attrs={
+                    "class": "space-y-2",
+                }
+            ),
+        }
