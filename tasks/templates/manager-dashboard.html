@@ -10,7 +10,7 @@
             <h3>Total Tasks</h3>
             <div class="flex justify-between space-y-3">
                 <div>
-                    <p class="text-4xl">3</p>
+                    <p class="text-4xl">{{count.total}}</p>
                     <span class="text-gray-400 mt-2">1 Month Ago</span>
                 </div>
                 <div
@@ -38,7 +38,7 @@
             <h3>Complete Tasks</h3>
             <div class="flex justify-between space-y-3">
                 <div>
-                    <p class="text-4xl">3</p>
+                    <p class="text-4xl">{{count.completed}}</p>
                     <span class="text-gray-400 mt-2">1 Month Ago</span>
                 </div>
                 <div
@@ -66,7 +66,7 @@
             <h3>Tasks In Progress</h3>
             <div class="flex justify-between space-y-3">
                 <div>
-                    <p class="text-4xl">3</p>
+                    <p class="text-4xl">{{count.in_progress}}</p>
                     <span class="text-gray-400 mt-2">1 Month Ago</span>
                 </div>
                 <div
@@ -94,7 +94,7 @@
             <h3>Todos</h3>
             <div class="flex justify-between space-y-3">
                 <div>
-                    <p class="text-4xl">3</p>
+                    <p class="text-4xl">{{count.pending}}</p>
                     <span class="text-gray-400 mt-2">1 Month Ago</span>
                 </div>
                 <div
@@ -146,6 +146,47 @@
             </tr>
         </thead>
         <tbody>
+
+            {% for task in tasks %}
+                <tr class="border-b border-gray-200 hover:bg-gray-50">
+                    <td class="px-4 py-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-3 h-3 rounded-full bg-green-600"></div>
+                            <p class="font-medium text-gray-800">{{task.title}}</p>
+                        </div>
+                    </td>
+                    <td class="py-4">
+                        <div
+                            class="text-blue-600 bg-blue-100 w-20 flex justify-center px-2 py-1 rounded-full text-sm font-medium"
+                        >
+                            {{task.details.get_priority_display}}
+                        </div>
+                    </td>
+                    <td class="py-4">
+                        <div class="flex">
+
+                            {% for emp in task.assigned_to.all %}
+                                <div
+                                    class="border-white border-2 bg-blue-600 -ml-3 h-10 w-10 rounded-full text-white flex justify-center items-center font-semibold text-sm"
+                                >
+                                    {{emp.name|slice:":2"|upper}}
+                                </div>
+                            {% endfor %}
+                            <div
+                                class="border-white border-2 bg-purple-600 h-10 w-10 rounded-full text-white -ml-3 flex items-center justify-center font-semibold text-sm"
+                            >
+                                JD
+                            </div>
+                            <div
+                                class="border-white border-2 bg-teal-600 h-10 w-10 rounded-full text-white -ml-3 flex items-center justify-center font-semibold text-sm"
+                            >
+                                SM
+                            </div>
+                        </div>
+                    </td>
+                    <td class="py-4 text-gray-600">{{task.created_at|timesince}}</td>
+                </tr>
+            {% endfor %}
             <!-- Low Priority Task -->
             <tr class="border-b border-gray-200 hover:bg-gray-50">
                 <td class="px-4 py-4">
