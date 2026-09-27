@@ -1,7 +1,6 @@
 import re
 
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 
@@ -40,3 +39,12 @@ class RegistrationForm(forms.ModelForm):
         if password1 != password2:
             raise forms.ValidationError("Passwords not the same")
         return cleaned_data
+
+
+class LoginForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = [
+            "username",
+            "password",
+        ]
