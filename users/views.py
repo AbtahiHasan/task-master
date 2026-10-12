@@ -1,5 +1,6 @@
+from django.contrib import messages
 from django.contrib.auth import authenticate, login
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 from users.forms import LoginForm, RegistrationForm
 
@@ -12,7 +13,14 @@ def sign_up(request):
     if request.method == "POST":
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save(commit=False)
+            user.set_password(form.cleaned_data.get("password1"))
+            user.is_active = True
+            user.save()
+            messages.success(
+                request, "A confirmation email has been sent to your email address."
+            )
+            return redirect("sign-in")
 
     return render(request, "registeration/sign-up.html", {"form": form})
 def sign_in(request):
